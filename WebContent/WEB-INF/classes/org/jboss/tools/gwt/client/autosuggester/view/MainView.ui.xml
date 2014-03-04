@@ -1,0 +1,108 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+		
+		.cellTable {
+			border-bottom: 1px solid #ccc;
+			text-align: left;
+			margin-bottom: 4px;
+		}
+		
+		.right {
+			padding-left: 50px;
+		}
+		
+		.info {
+			padding: 50px;
+		}
+		
+		.searchInfo {
+			padding: 10px;
+		}
+		
+		.searchBox {
+			width: 200px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HorizontalPanel styleName="{style.info}">
+			<g:FlowPanel>
+				<g:RadioButton ui:field="analyzing" ui:name="suggester">AnalyzingSuggester</g:RadioButton>
+				<g:RadioButton ui:field="fuzzy" ui:name="suggester">FuzzySuggester</g:RadioButton>
+				<g:RadioButton ui:field="standard" ui:name="analyzer">Standard
+					Analyzer</g:RadioButton>
+				<g:RadioButton ui:field="keyword" ui:name="analyzer">Keyword
+					Analyzer</g:RadioButton>
+				<g:HTMLPanel styleName="{style.searchInfo}">
+					<span>Please type in letters to see how auto suggestion works. For
+						instance type in "c" letter to see suggestions related to "c". Hit
+						search button to add the query to query logs and
+						try autosuggestion
+						on those queries. To see the difference between analyzing
+						suggester and fuzzy suggester type in "colla".</span>
+				</g:HTMLPanel>
+				<g:HTMLPanel>
+					<g:SuggestBox ui:field="suggestBox" styleName="{style.searchBox}"></g:SuggestBox>
+					<g:Button styleName="{style.important}" ui:field="button">Search</g:Button>
+				</g:HTMLPanel>
+			</g:FlowPanel>
+			<g:HTMLPanel styleName="{style.right}">
+				<g:VerticalPanel>
+					<g:HTMLPanel>
+						<span>Query Logs:</span>
+					</g:HTMLPanel>
+					<g:HTMLPanel>
+						<table cellspacing='0' cellpadding='0' style='width:100%;'>
+							<tr>
+								<td valign='top'>
+									<c:CellTable addStyleNames='{style.cellTable}'
+										pageSize='10' ui:field='cellTable' />
+								</td>
+							</tr>
+							<tr>
+								<td align='center'>
+									<c:SimplePager ui:field='pager' />
+								</td>
+							</tr>
+						</table>
+					</g:HTMLPanel>
+
+				</g:VerticalPanel>
+			</g:HTMLPanel>
+		</g:HorizontalPanel>
+		<g:HTMLPanel styleName="{style.info}">
+			<div dir="ltr" style="text-align: left;" trbidi="on">
+				This app demonstrates a sample autosuggester using lucene's&nbsp;
+				<a
+					href="http://lucene.apache.org/core/4_1_0/suggest/org/apache/lucene/search/suggest/analyzing/AnalyzingSuggester.html"
+					target="_blank">AnalyzingSuggester</a>
+				&nbsp;and
+				<a
+					href="http://lucene.apache.org/core/4_1_0/suggest/org/apache/lucene/search/suggest/analyzing/FuzzySuggester.html"
+					target="_blank">FuzzySuggester</a>
+				&nbsp;which extends analyzing suggester. &nbsp;The analzyer can
+				be
+				selected and how the analyzer perfoms on the data sets can be
+				seen
+				using the GWT's suggest box. The top 10 suggestions are only
+				displayed. This demo is just to see how the analyzing suggester
+				and
+				fuzzy suggester works on small live data sets. The data sets
+				is build
+				at real time and auto suggestion is done based on the
+				live dataset.
+				However, when developing real auto suggester system
+				for really big
+				application then, first the query logs needs to
+				processed and create
+				the targest, giving higher weight to those
+				queries that appear more
+				frequently.
+			</div>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

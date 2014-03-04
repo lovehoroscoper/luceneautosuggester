@@ -1,0 +1,2 @@
+serviceClass: org.jboss.tools.gwt.client.autosuggester.AutosuggestService
+path: FDC79CAC88326AB93DC3D183AF84D5F9.gwt.rpc
